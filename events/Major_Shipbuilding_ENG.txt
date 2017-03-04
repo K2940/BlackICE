@@ -1,0 +1,52 @@
+﻿province_event = {
+    id = 48500
+    
+    is_triggered_only = yes
+
+    trigger = {
+        has_province_flag = shipbuilding_target
+    }
+
+	title = "Ordering of the battleship HMS Howe"
+	desc = "Place the ship in the Production Queue"
+	picture = "Howe"
+
+    option = {
+		name = "Go Ahead"
+		metal = -1500
+		controller = { load_oob = ENG_Howe.txt }
+        controller = {
+            any_controlled = {
+                limit = {
+                    has_province_flag = shipbuilding_target
+                    NOT = { has_province_modifier = shipbuilding1 } 
+                    NOT = { has_province_modifier = shipbuilding2 }
+                }
+                add_province_modifier = { name = shipbuilding1 duration = 1}
+                clr_province_flag = shipbuilding_target
+            }
+        }
+        controller = {
+            any_controlled = {
+                limit = {
+                    has_province_flag = shipbuilding_target
+                    has_province_modifier = shipbuilding1
+                    NOT = { has_province_modifier = shipbuilding2 }
+                }
+                add_province_modifier = { name = shipbuilding2 duration = 1}
+                clr_province_flag = shipbuilding_target
+            }
+        }
+        controller = {
+            any_controlled = {
+                limit = {
+                    has_province_flag = shipbuilding_target
+                    has_province_modifier = shipbuilding1
+                    NOT = { has_province_modifier = shipbuilding2 }
+                }
+                add_province_modifier = { name = shipbuilding2 duration = 1}
+                clr_province_flag = shipbuilding_target
+            }
+        }
+    }
+}

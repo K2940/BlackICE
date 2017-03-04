@@ -1,0 +1,21 @@
+﻿diplomatic_decisions = {
+	build_major_ship = {
+		potential = {}
+		allow = {
+			any_owned_province =  {
+				and = {
+					controlled_by = THIS
+					strategic_resource = dockyard_facilities
+					or = {
+						NOT = { has_province_modifier = shipbuilding1 }
+						NOT = { has_province_modifier = shipbuilding2 }
+					}
+				}
+			}
+		}
+		effect = {
+			country_event = 49100
+			
+		}	
+	}
+}

@@ -1,0 +1,32 @@
+﻿# Event for Eng
+country_event = {
+    id = 49100
+
+    is_triggered_only = yes
+
+    trigger = {
+        tag = ENG
+        #TechRequirements
+    }
+
+    title = "Major Shipbuilding"
+    desc = "Select and Place a ship in the Production Queue"
+
+    option = {
+        name = "Build a Battleship!"
+        random_owned = {
+            limit = { 
+                controlled_by = THIS 
+                or = {
+                    NOT = { has_province_modifier = shipbuilding1 }
+                    NOT = { has_province_modifier = shipbuilding2 }
+                }
+                strategic_resource = dockyard_facilities
+            }
+            set_province_flag = shipbuilding_target            
+        }
+        any_controlled = {
+            province_event = 48500
+        }
+    }
+}
